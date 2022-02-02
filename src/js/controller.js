@@ -9,6 +9,7 @@ import addRecipeView from './views/addRecipeView.js';
 
 import 'core-js/stable'; //ployfilling array methods, promise...
 import 'regenerator-runtime/runtime'; //polyfilling aysnc functions
+import features from 'core-js/features';
 
 //This is from parcel - to reload the page without changing the current state. it only loads the updated module alone
 // if (module.hot) {
@@ -137,6 +138,10 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const newFeature = function () {
+  console.log('Welcome to the Fokify Application');
+};
+
 const init = function () {
   // window.location.hash = '';
   recipeView.addHandlerRender(contolRecipes);
@@ -146,6 +151,7 @@ const init = function () {
   paginationView.addHandlerClick(controlPagination);
   bookmarksView.addHandlerRender(controlBookmarks);
   addRecipeView._addHandlerUpload(controlAddRecipe);
+  newFeature();
 };
 
 init();
