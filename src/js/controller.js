@@ -9,8 +9,7 @@ import addRecipeView from './views/addRecipeView.js';
 
 import 'core-js/stable'; //ployfilling array methods, promise...
 import 'regenerator-runtime/runtime'; //polyfilling aysnc functions
-import features from 'core-js/features';
-
+import { async } from 'regenerator-runtime';
 //This is from parcel - to reload the page without changing the current state. it only loads the updated module alone
 // if (module.hot) {
 //   module.hot.accept();
@@ -22,24 +21,21 @@ import features from 'core-js/features';
 
 const contolRecipes = async function () {
   try {
-    //get hash id from window
     const id = window.location.hash.slice(1);
-    // console.log(id);
 
     if (!id) return;
-
     recipeView.renderSpinner();
 
-    //0. result and bookmark view to mark selected search results
+    // 0) Update results view to mark selected search result
     resultView.update(model.getSearchResultPage());
+
+    // 1) Updating bookmarks view
     bookmarksView.update(model.state.bookmarks);
 
-    //1. Loading recipe
+    // 2) Loading recipe
     await model.loadRecipe(id);
-    const recipe = model.state.recipe;
-    // console.log(recipe);
 
-    //2. Rendering recipe
+    // 3) Rendering recipe
     recipeView.render(model.state.recipe);
   } catch (err) {
     console.error(err);
@@ -143,7 +139,7 @@ const newFeature = function () {
 };
 
 const init = function () {
-  // window.location.hash = '';
+  window.location.hash = '';
   recipeView.addHandlerRender(contolRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
