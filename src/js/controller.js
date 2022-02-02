@@ -1,5 +1,4 @@
 import * as model from './model.js';
-import { Fraction } from 'fractional';
 import { MODEL_CLOSE_SEC } from './config.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
@@ -10,7 +9,6 @@ import addRecipeView from './views/addRecipeView.js';
 
 import 'core-js/stable'; //ployfilling array methods, promise...
 import 'regenerator-runtime/runtime'; //polyfilling aysnc functions
-import { async } from 'regenerator-runtime';
 //This is from parcel - to reload the page without changing the current state. it only loads the updated module alone
 // if (module.hot) {
 //   module.hot.accept();
