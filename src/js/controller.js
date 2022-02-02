@@ -138,7 +138,7 @@ const newFeature = function () {
 };
 
 const init = function () {
-  window.location.hash = '';
+  // window.location.hash = '';
   recipeView.addHandlerRender(contolRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
