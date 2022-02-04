@@ -26,8 +26,7 @@ const contolRecipes = async function () {
     recipeView.renderSpinner();
 
     // 0) Update results view to mark selected search result
-    console.log(model.getSearchResultPage());
-    // resultView.update(model.getSearchResultPage());
+    resultView.update(model.getSearchResultPage());
 
     // 1) Updating bookmarks view
     bookmarksView.update(model.state.bookmarks);
@@ -110,7 +109,7 @@ const controlAddRecipe = async function (newRecipe) {
 
     //Upload new recipe data
     await model.uploadRecipe(newRecipe);
-    console.log(model.state.recipe);
+    // console.log(model.state.recipe);
 
     // Render Recipe
     recipeView.render(model.state.recipe);
