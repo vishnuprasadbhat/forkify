@@ -26,7 +26,8 @@ const contolRecipes = async function () {
     recipeView.renderSpinner();
 
     // 0) Update results view to mark selected search result
-    resultView.update(model.getSearchResultPage());
+    console.log(model.getSearchResultPage());
+    // resultView.update(model.getSearchResultPage());
 
     // 1) Updating bookmarks view
     bookmarksView.update(model.state.bookmarks);
@@ -139,12 +140,12 @@ const newFeature = function () {
 
 const init = function () {
   // window.location.hash = '';
+  bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(contolRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(contolSearchResults);
   paginationView.addHandlerClick(controlPagination);
-  bookmarksView.addHandlerRender(controlBookmarks);
   addRecipeView._addHandlerUpload(controlAddRecipe);
   newFeature();
 };
