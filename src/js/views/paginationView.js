@@ -23,18 +23,25 @@ class PaginationView extends View {
     );
     // Page 1, and there are other
     if (curPage === 1 && numPages > 1) {
-      return this._generateMarkupPaginationNext(curPage);
+      return (
+        this._generateMarkupPaginationGotoLast(numPages) +
+        this._generateMarkupPaginationNext(curPage)
+      );
     }
 
     // Last page
     if (curPage === numPages && numPages > 1) {
-      return this._generateMarkupPaginationPrev(curPage);
+      return (
+        this._generateMarkupPaginationPrev(curPage) +
+        this._generateMarkupPaginationGotoFirst()
+      );
     }
 
     // Other pages
     if (curPage < numPages) {
       return (
         this._generateMarkupPaginationPrev(curPage) +
+        this._generateMarkupPaginationGotoLast(numPages) +
         this._generateMarkupPaginationNext(curPage)
       );
     }
@@ -65,6 +72,22 @@ class PaginationView extends View {
                 <use href="${icons}#icon-arrow-left"></use>
                 </svg>
                 <span>Page ${curPage - 1}</span>
+        </button>
+      `;
+  }
+
+  _generateMarkupPaginationGotoLast(numPages) {
+    return `
+        <button data-goto="${numPages}" class="btn--inline pagination__btn--center">
+          <span>Goto Pages: ${numPages}</span>
+        </button>
+      `;
+  }
+
+  _generateMarkupPaginationGotoFirst() {
+    return `
+        <button data-goto="1" class="btn--inline pagination__btn--center">
+          <span>Goto Page: 1</span>
         </button>
       `;
   }
