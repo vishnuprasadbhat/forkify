@@ -79,7 +79,7 @@ class PaginationView extends View {
   _generateMarkupPaginationGotoLast(numPages) {
     return `
         <button data-goto="${numPages}" class="btn--inline pagination__btn--center">
-          <span>Goto Pages: ${numPages}</span>
+          <span>Goto Page: ${numPages}</span>
         </button>
       `;
   }
